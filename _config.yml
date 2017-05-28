@@ -69,3 +69,9 @@ theme: landscape-plus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+# 网站地图
+sitemap: 
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
