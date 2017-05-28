@@ -1,10 +1,11 @@
 ---
 title: 【Rust】在使用Cargo镜像的情况下，使用Racer补全第三方库
-date: 2017-05-28 20:32:46
-tags: 
-    - Rust
-    - Racer
-    - Cargo
+urlname: completion_for_third_party_crates_by_racer_with_cargo_mirror
+date: 2017-01-01 13:30:00
+tags:
+  - Rust
+  - Racer
+  - Cargo
 ---
 
 **本文没有任何技术含量，仅做记录并方便后来者。**

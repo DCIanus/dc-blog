@@ -1,5 +1,6 @@
 ---
 title: 【无聊向】迅雷影音字幕下载API
+urlname: api_for_xunlei_subscene
 date: 2017-05-28 21:07:32
 tags:
 ---
