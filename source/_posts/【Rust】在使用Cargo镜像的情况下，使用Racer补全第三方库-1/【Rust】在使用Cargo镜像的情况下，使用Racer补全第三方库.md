@@ -13,7 +13,7 @@ tags:
 ### 起因
 
 因为众所周知的原因，大陆地区相当一部分Rust爱好者(目前大部分只能叫爱好者)都会使用中科大的Cargo镜像以提高下载速度，但是通过镜像下载的第三方crate却无法使用racer自动补全，而使用代理下载的情况下则可以补全。
-
+<!--more-->
 于是上网搜索，发现有人遇到了与我[相同的问题](https://www.zhihu.com/question/49261154)。看到已经有人提了[issue](https://github.com/phildawes/racer/issues/513)。
 
 Cargo将下载的第三方库缓存在.cargo/registry/
