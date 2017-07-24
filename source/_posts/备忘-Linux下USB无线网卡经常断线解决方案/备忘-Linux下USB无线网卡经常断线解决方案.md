@@ -17,28 +17,28 @@ tags:
 在京东购买了COMFAST CF-WU810N USB无线网卡，成功将网络延迟缩短到10ms以内，但是随后又出现了新的问题：SSH模式下偶发性无响应几秒后才可继续操作，严重时甚至SSH连接超时中断。经过仔细排查，最终确定原因是无线网卡的自动休眠机制。
 
 搜索后发现其他人也有[类似情况](http://m.blog.csdn.net/ferstar/article/details/51093696)出现，但是对方与我无线网卡芯片不同，不可直接使用，使用lsusb命令结果如下
-
-    ➜  ~ lsusb
-    Bus 002 Device 002: ID 8087:8000 Intel Corp.
-    Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-    Bus 001 Device 002: ID 8087:8008 Intel Corp.
-    Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-    Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-    Bus 003 Device 003: ID 05e3:0745 Genesys Logic, Inc. Logilink CR0012
-    Bus 003 Device 002: ID 8087:07dc Intel Corp.
-    Bus 003 Device 006: ID 0bda:8179 Realtek Semiconductor Corp. RTL8188EUS 802.11n Wireless Network Adapter
-    Bus 003 Device 005: ID 0b95:772b ASIX Electronics Corp. AX88772B
-    Bus 003 Device 004: ID 05e3:0608 Genesys Logic, Inc. Hub
-    Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-
+```bash
+➜  ~ lsusb
+Bus 002 Device 002: ID 8087:8000 Intel Corp.
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 8087:8008 Intel Corp.
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 003: ID 05e3:0745 Genesys Logic, Inc. Logilink CR0012
+Bus 003 Device 002: ID 8087:07dc Intel Corp.
+Bus 003 Device 006: ID 0bda:8179 Realtek Semiconductor Corp. RTL8188EUS 802.11n Wireless Network Adapter
+Bus 003 Device 005: ID 0b95:772b ASIX Electronics Corp. AX88772B
+Bus 003 Device 004: ID 05e3:0608 Genesys Logic, Inc. Hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+```
 以下行对应我的无线网卡，其中`RTL8188EUS`为其无线网卡芯片型号
         Bus 003 Device 006: ID 0bda:8179 Realtek Semiconductor Corp. RTL8188EUS 802.11n Wireless Network Adapter
 
 编辑`/etc/modprobe.d/8188eus.conf`文件，其中内容为:
-
-    # 加点参数, 禁用自动休眠
-    options 8188eus rtw_power_mgnt=0
-
+```conf
+# 加点参数, 禁用自动休眠
+options 8188eus rtw_power_mgnt=0
+```
 成功搞定！
 
 # 题外话:

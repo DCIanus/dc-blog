@@ -20,11 +20,11 @@ Cargo将下载的第三方库缓存在.cargo/registry/
 中，且不同的register缓存到不同的文件夹，如小弟使用的是默认register，故，该文件夹名为“github.com-1ecc6299db9ec823”。部分同学使用的是USTC提供的镜像，则其文件夹开头应为USTC镜像的域名。
 
 在当前racer(2.0.6)项目中[cargo.rs](https://github.com/phildawes/racer/blob/c756eaef7a5dfd4bf7ecb4b8165136db9111d128/src/racer/cargo.rs#L448)文件中有这一段
-
-	if fname.starts_with("github.com-") {
-        out.push(path.clone());
-    }
-
+```rust
+if fname.starts_with("github.com-") {
+      out.push(path.clone());
+}
+```
 综上导致目前版本racer仅能匹配"github-"开头的文件夹。
 
 #### 解决方法 1

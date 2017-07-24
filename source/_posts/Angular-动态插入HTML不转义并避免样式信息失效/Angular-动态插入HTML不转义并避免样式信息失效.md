@@ -14,15 +14,16 @@ angular中有时需要动态插入HTML内容，直接使用差值表达式插入
 在`stack overflow`找到该问题的[解决方案](https://stackoverflow.com/questions/31548311/angular-2-html-binding):
 
 即使用以下形式进行绑定:
-
-    <div [innerHTML]="content"></div>
-
+```html
+<div [innerHTML]="content"></div>
+```
 且根据官网文档，使用该方法插入的HTML内容将会过滤掉其中的`<script>`标签内容以保证安全。
 
 但随后发现，原模板中的CSS信息对使用该方法插入的HTML内容无效，经过查找，发现有人发了[issue](https://github.com/angular/angular/issues/7845)，并有人提供了[解决方案](https://stackoverflow.com/questions/36265026/angular-2-innerhtml-styling/36265072#36265072)
 
 即在component装饰器中添加以下选项
-
-    @Component({
-        encapsulation: ViewEncapsulation.None
-    })
+```typescript
+@Component({
+    encapsulation: ViewEncapsulation.None
+})
+```
